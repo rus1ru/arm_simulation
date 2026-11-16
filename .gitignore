@@ -9,7 +9,9 @@ export.log
 report/*.aux
 report/*.log
 report/*.out
+report/*.pdf
 results/*.mp4
 results/*.png
-results/*run.json
+results/*.json
 !results/fixed_grasp_clearance_run.json
+results/*.txt
