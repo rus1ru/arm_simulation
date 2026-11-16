@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.8)
+project(robo2)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY config launch meshes urdf worlds DESTINATION share/${PROJECT_NAME})
+install(PROGRAMS scripts/joint_demo.py scripts/pick_place.py scripts/gp7_kinematics.py DESTINATION lib/${PROJECT_NAME})
+ament_package()

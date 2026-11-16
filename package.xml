@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robo2</name><version>1.0.0</version>
+  <description>GP7 CAD simulation for ROS 2 Jazzy and Gazebo Harmonic.</description>
+  <maintainer email="student@example.com">Robotics project team</maintainer>
+  <license>BSD</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>ros_gz_sim</exec_depend><exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend><exec_depend>xacro</exec_depend>
+  <exec_depend>gz_ros2_control</exec_depend><exec_depend>controller_manager</exec_depend>
+  <exec_depend>joint_state_broadcaster</exec_depend><exec_depend>joint_trajectory_controller</exec_depend>
+  <exec_depend>control_msgs</exec_depend><exec_depend>tf2_msgs</exec_depend><exec_depend>std_msgs</exec_depend><exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>python3-numpy</exec_depend><exec_depend>python3-scipy</exec_depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>ament_index_python</exec_depend><exec_depend>launch_ros</exec_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
