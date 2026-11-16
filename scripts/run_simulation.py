@@ -21,6 +21,10 @@ def sourced(command: str) -> list[str]:
     return ['bash', '-lc', f'source {shlex.quote(str(ROS_SETUP))} && source {shlex.quote(str(INSTALL_SETUP))} && {command}']
 
 
+def pick_place_command(results: Path) -> list[str]:
+    return ['ros2', 'run', 'robo2', 'pick_place.py', '--results', str(results.resolve())]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--no-build', action='store_true', help='reuse the existing ROS2 build')
@@ -53,13 +57,21 @@ def main() -> int:
             check = subprocess.run(sourced('ros2 service list'), cwd=PROJECTS,
                                    capture_output=True, text=True)
             if '/controller_manager/list_controllers' in check.stdout:
-                ready = True
-                break
+                controllers = subprocess.run(
+                    sourced("ros2 service call /controller_manager/list_controllers controller_manager_msgs/srv/ListControllers '{}'"),
+                    cwd=PROJECTS, capture_output=True, text=True)
+                output = controllers.stdout
+                ready = ('name=\'arm_controller\'' in output and
+                         'state=\'active\'' in output and
+                         'name=\'gripper_controller\'' in output and
+                         output.count("state='active'") >= 3)
+                if ready:
+                    break
             time.sleep(1)
         if not ready:
             raise TimeoutError('Controller manager did not start within 120 seconds')
         print('Controllers ready; running pick-and-place.', flush=True)
-        command = sourced(f'ros2 run robo2 pick_place.py --results {args.results.resolve()}')
+        command = sourced(shlex.join(pick_place_command(args.results)))
         return subprocess.run(command, cwd=PROJECTS).returncode
     except KeyboardInterrupt:
         return 130
