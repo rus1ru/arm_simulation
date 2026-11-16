@@ -1,0 +1,15 @@
+.ros2_build/
+.ros2_install/
+install/
+build/
+log/
+__pycache__/
+*.py[cod]
+export.log
+report/*.aux
+report/*.log
+report/*.out
+results/*.mp4
+results/*.png
+results/*run.json
+!results/fixed_grasp_clearance_run.json
