@@ -14,6 +14,16 @@ ros2 run robo2 pick_place.py --results robo2/results/pick_place_results.json
 ```
 Start a fresh simulation for each run. The executor expects an initially zeroed arm and Box B at its source. Do not rerun against the completed scene.
 
+## One-command simulation
+
+From the Projects directory, run:
+
+```bash
+/usr/bin/python3 robo2/scripts/run_simulation.py
+```
+
+It builds, launches Gazebo, waits for the controllers, executes one pick-and-place, saves `robo2/results/latest_run.json`, and shuts down. Use `--no-build` to reuse an existing build. Do not run while another project Gazebo launch is active. See `COMMANDS.md`.
+
 ## Implemented
 - ROS 1 Catkin and Gazebo Classic launch files replaced with ament_cmake and ROS 2 launch.
 - Original exported arm CAD visual meshes retained. Simplified per-link bounding-box collisions.

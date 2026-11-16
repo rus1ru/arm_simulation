@@ -1,5 +1,21 @@
 # Command Reference
 
+## One-command run with Python
+
+From the Projects directory:
+
+```bash
+/usr/bin/python3 robo2/scripts/run_simulation.py
+```
+
+This builds the package, starts a fresh Gazebo launch, waits for the controller manager, runs one pick-and-place sequence, writes `robo2/results/latest_run.json`, then shuts down Gazebo. Press `Ctrl+C` to interrupt. To reuse the current build:
+
+```bash
+/usr/bin/python3 robo2/scripts/run_simulation.py --no-build
+```
+
+Use `--help` to choose a different results path. Do not start this while another `robo2` Gazebo launch is active.
+
 Run project commands from the directory that contains `robo2/` (the repository parent). Use a separate sourced terminal for commands marked Terminal 2.
 
 ## 1. Build the ROS 2 package
