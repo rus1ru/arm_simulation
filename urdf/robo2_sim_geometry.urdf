@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!-- GP7 position and max-speed limits from Yaskawa DS-866 (Jan 2021); degrees converted to radians. -->
 <robot name="robo2">
   <link name="base_link">
     <inertial>
@@ -49,7 +50,7 @@
     <parent link="base_link" />
     <child link="Link_1" />
     <axis xyz="0 0 -1" />
-    <limit lower="-3.14" upper="3.14" effort="200" velocity="2" />
+    <limit lower="-2.967059728390" upper="2.967059728390" effort="200" velocity="6.544984694979" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
   <link name="Link_2">
@@ -79,7 +80,7 @@
     <parent link="Link_1" />
     <child link="Link_2" />
     <axis xyz="-0.0039166091259927533 0 0.99999233005706301" />
-    <limit lower="-3.14" upper="3.14" effort="200" velocity="2" />
+    <limit lower="-1.134464013796" upper="2.530727415392" effort="200" velocity="5.497787143782" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
   <link name="Link_3">
@@ -109,7 +110,7 @@
     <parent link="Link_2" />
     <child link="Link_3" />
     <axis xyz="0 0.0039166091259927533 0.99999233005706301" />
-    <limit lower="-3.14" upper="3.14" effort="200" velocity="2" />
+    <limit lower="-1.221730476396" upper="3.316125578789" effort="200" velocity="7.155849933177" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
   <link name="Link_4">
@@ -139,7 +140,7 @@
     <parent link="Link_3" />
     <child link="Link_4" />
     <axis xyz="-0.045196021518853303 0.99897047563255337 -0.0039126018628786929" />
-    <limit lower="-3.14" upper="3.14" effort="200" velocity="2" />
+    <limit lower="-3.316125578789" upper="3.316125578789" effort="200" velocity="9.599310885969" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
   <link name="Link_5">
@@ -169,7 +170,7 @@
     <parent link="Link_4" />
     <child link="Link_5" />
     <axis xyz="-0.0039733052472976848 0.0012536016555539167 0.99999132062648477" />
-    <limit lower="-3.14" upper="3.14" effort="200" velocity="2" />
+    <limit lower="-2.356194490192" upper="2.356194490192" effort="200" velocity="9.599310885969" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
   <link name="Link_6">
@@ -199,7 +200,7 @@
     <parent link="Link_5" />
     <child link="Link_6" />
     <axis xyz="-0.048900804054556789 -0.0039071843439186169 -0.99879599782604278" />
-    <limit lower="-3.14" upper="3.14" effort="200" velocity="2" />
+    <limit lower="-6.283185307180" upper="6.283185307180" effort="200" velocity="17.453292519943" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
   <link name="tool0" />

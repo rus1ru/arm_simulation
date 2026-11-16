@@ -36,7 +36,7 @@ class Executor(Node):
         self.joint_time = 0.0
         self.carry_poses = []
         self.carrying = False
-        self.kinematics = Kinematics(Path(get_package_share_directory('robo2')) / 'urdf/robo2.urdf')
+        self.kinematics = Kinematics(Path(get_package_share_directory('robo2')) / 'urdf/robo2_sim_geometry.urdf')
         self.create_subscription(JointState, '/joint_states', self.on_joints, qos_profile_sensor_data)
         self.create_subscription(TFMessage, '/model/box_b/pose', self.on_pose,
                                  qos_profile_sensor_data)

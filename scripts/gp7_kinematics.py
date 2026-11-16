@@ -15,7 +15,7 @@ from scipy.spatial.transform import Rotation
 ROOT = Path(__file__).resolve().parents[1]
 
 class Kinematics:
-    def __init__(self, urdf=ROOT / 'urdf/robo2.urdf'):
+    def __init__(self, urdf=ROOT / 'urdf/robo2_sim_geometry.urdf'):
         joints = ET.parse(urdf).getroot().findall('joint')[:6]
         self.names = [j.attrib['name'] for j in joints]
         self.origins = []
@@ -187,7 +187,7 @@ def generate():
                 expected_object_pose=dict(position=object_target.tolist(), orientation=[0, 0, 0, 1]),
                 tcp_orientation=Rotation.from_matrix(orientation).as_quat().tolist(),
                 assumptions=['base z=0.002m', 'TCP Link_6 offset [0.0051601583, 0.0014121731, 0.1053659958]m',
-                             'ungeometry-derived original +/-3.14 joint limits',
+                             'Yaskawa GP7 datasheet joint position and maximum speed limits (simulation model)',
                              'TCP is 0.010m above object center at grasp and place; clears simulator palm box',
                              'arm local mesh AABBs checked against fixed box_a and ground at every sample',
                              'transformed CAD finger bounds and simulator palm box checked; 0.1mm intended closing contact tolerance; self/full mesh collision not certified'])

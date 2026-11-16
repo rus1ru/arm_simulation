@@ -44,7 +44,7 @@ Times in JSON are local to each phase. Joint velocities are finite-difference es
 
 ## Limits and safety scope
 
-All six exported position ranges remain `[-3.14, 3.14]` and velocity limits remain 2 rad/s. These are uncalibrated URDF limits, not a verified mapping to manufacturer joint conventions. No manufacturer D–H parameters, offsets, or hardware-safe ranges are claimed.
+The active simulator URDF encodes Yaskawa GP7 manufacturer position ranges and maximum axis speeds from datasheet DS-866 (Jan. 2021), converted from degrees to radians. These are mapped to the exported axes S/L/U/R/B/T by joint order; the exported joint frame zero/sign conventions have not been calibrated against a physical controller. They are simulation constraints, not hardware-safe settings.
 
 Corrected CAD fingers are positioned using exported mesh frames. The grasp TCP is 10 mm above the cube center to clear the palm; conservative simulated palm clearance is approximately 3.4 mm. An approach guard aborts if the cube moves more than 3 mm or rotates more than 0.02 rad before attachment. The lift/transfer height keeps the nominal box bottom above the 0.20 m platform during transfer. Full arm/environment and self-collision checks, continuous-time controller interpolation bounds, dynamics, grasp reliability, and actual object placement require simulation validation. Passing numerical kinematics tests alone does not establish those properties.
 
